@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../Footer/Footer";
 
 const Login = () => {
     return (
@@ -84,6 +85,7 @@ const Login = () => {
             </div>
           </div>
         </section>
+        <Footer></Footer>
       </div>
     );
 };

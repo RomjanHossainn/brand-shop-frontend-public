@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "../../Banner/Banner";
 import Navbar from "../../components/Navbar/Navbar";
 import SingleCategory from "../../components/SingleCategory/SingleCategory";
+import Footer from "../../Footer/Footer";
 
 const Home = () => {
   const loadedCategory = useLoaderData();
@@ -20,6 +21,7 @@ const Home = () => {
             }
           </div>
         </div>
+        <Footer></Footer>
       </div>
     );
 };

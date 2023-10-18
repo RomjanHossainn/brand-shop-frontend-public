@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const SingleCategory = ({category}) => {
+  
     const {image,name} = category;
     
     return (

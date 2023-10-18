@@ -1,13 +1,49 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../Footer/Footer";
+import { useState } from "react";
 
 const Register = () => {
+
+  const [alert,setAlert] = useState('')
+
+  const handleRegister = (e) => {
+      e.preventDefault()
+
+      const form = e.target;
+
+      const name = form.name.value;
+      const email = form.email.value;
+      const password = form.password.value;
+      const imageURL = form.imageURL.value;
+
+
+      if (!name && !email && !password && !imageURL) {
+        return setAlert("All Feild Are Requard");
+      } else if (!name) {
+        return setAlert("Please enter your name");
+      } else if (!email) {
+        return setAlert("Please enter your email");
+      } else if (!password) {
+        return setAlert("Please enter your password");
+      } else if (!imageURL) {
+        return setAlert("Please enter your imageURL");
+      }
+
+
+      
+
+
+      
+  }
+
+
     return (
       <div>
         <Navbar></Navbar>
         <div className="bg-grey-lighter py-6 min-h-screen flex flex-col">
           <div className="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            <form>
+            <form onSubmit={handleRegister}>
               <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                 <h1 className="mb-8 text-3xl text-center">Sign up</h1>
                 <input
@@ -76,6 +112,7 @@ const Register = () => {
             </div>
           </div>
         </div>
+        <Footer></Footer>
       </div>
     );
 };
