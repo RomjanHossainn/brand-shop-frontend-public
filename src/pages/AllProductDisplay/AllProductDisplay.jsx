@@ -94,7 +94,7 @@ const AllProductDisplay = () => {
           </div>
         </div>
 
-        <div className="grid mt-6 md:grid-cols-3 gap-5 lg:grid-cols-4">
+        <div className="grid mt-6 md:grid-cols-2 gap-5 lg:grid-cols-3">
           {products?.map((product) => (
             <SingleProductDisplay
               key={product._id}

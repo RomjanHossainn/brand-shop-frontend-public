@@ -1,7 +1,9 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { RxUpdate } from "react-icons/rx";
+import { Link } from "react-router-dom";
 const SingleProductDisplay = ({ product }) => {
-  console.log(product);
   const { _id, name, price, image,brand_name } = product || {};
+  console.log(_id)
   return (
     <div className="mt-5 lg:mt-0">
       <div>
@@ -13,9 +15,16 @@ const SingleProductDisplay = ({ product }) => {
           <h2 className="font-semibold  capitalize">{name}</h2>
           <h2>{price}$</h2>
         </div>
-        <button className="bg-[#38c171] text-white h-max rounded flex items-center gap-2 px-3 py-1">
-          Details<FaArrowRightLong></FaArrowRightLong>
-        </button>
+        <div className="flex items-center gap-3">
+          <button className="bg-[#38c171] text-sm text-white h-max rounded flex items-center gap-2 px-2 py-1">
+            Details<FaArrowRightLong></FaArrowRightLong>
+          </button>
+          <Link to={`/update/${_id}`}>
+            <button className="bg-[#38c171] text-sm text-white h-max rounded flex items-center gap-2 px-2 py-1">
+              Update<RxUpdate></RxUpdate>
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
