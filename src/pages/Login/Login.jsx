@@ -1,8 +1,88 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../Footer/Footer";
-
+import { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase/firebase.config";
 const Login = () => {
+  
+  const navigate = useNavigate()
+
+  const { loginUser } = useContext(AuthContext);
+
+  const location = useLocation();
+  console.log(location)
+
+const [alert, setAlert] = useState("");
+
+  const handleLogin  = e => {
+
+    e.preventDefault();
+
+    const form = e.target;
+
+    const email = form.email.value;
+    const password = form.password.value;
+    const checkbox = form.checkbox.checked;
+
+    if (!email && !password) {
+      return setAlert("All Feild Are Requard");
+    } else if (!email) {
+      return setAlert("Please enter your email");
+    } else if (!password) {
+      return setAlert("Please enter your password");
+    } else if (!checkbox) {
+      return setAlert("please check checkbox");
+    } 
+
+    loginUser (email,password)
+    .then(result => {
+      const user = result.user;
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Login in successfully",
+      });
+      navigate(location.state ? location.state : '/')
+    })
+    .catch(erorr => {
+      if(erorr.code === 'auth/invalid-login-credentials'){
+        setAlert('invalid info please provied valid info');
+      }
+    })
+
+
+
+
+
+  }
+
+    const provider = new GoogleAuthProvider()
+
+    const handleGoogle = () => {
+      signInWithPopup(auth,provider)
+      .then(result => {
+          const user = result.user;
+          navigate(location.state ? location.state : "/");
+      })
+      .catch(erorr => {
+        console.log(erorr.message)
+      })
+    }
+ 
     return (
       <div>
         <Navbar></Navbar>
@@ -13,7 +93,17 @@ const Login = () => {
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to your account
                 </h1>
-                <form className="space-y-4 md:space-y-6" action="#">
+                <div onClick={handleGoogle} className="flex items-center dark:bg-gray-800">
+                <button className="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+                    <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo"/>
+                    <span>Login with Google</span>
+                </button>
+              </div>
+                <form
+                  onSubmit={handleLogin}
+                  className="space-y-4 md:space-y-6"
+                  action="#"
+                >
                   <div>
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                       Your email
@@ -40,6 +130,7 @@ const Login = () => {
                       required=""
                     />
                   </div>
+                  <p>{alert}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-start">
                       <div className="flex items-center h-5">
@@ -47,6 +138,7 @@ const Login = () => {
                           id="remember"
                           aria-describedby="remember"
                           type="checkbox"
+                          name="checkbox"
                           className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                           required=""
                         />

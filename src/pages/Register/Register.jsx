@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../Footer/Footer";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
+
+  const {createUser} = useContext(AuthContext)
+
+  const registerToHome = useNavigate()
 
   const [alert,setAlert] = useState('')
 
@@ -30,10 +37,49 @@ const Register = () => {
         return setAlert("Please enter your imageURL");
       }
 
+      if (!/^(?=.*[A-Z])(?=.*[\W_]).{6,}$/.test(password)) {
+        return setAlert(
+          "please provied  a valid password example -- min 6 characters -- special charactar -- capital letter "
+        );
+      }else{
+        createUser(email, password)
+          .then((result) => {
+            const user = result.user;
+            updateProfile(user, {
+              displayName: name,
+              photoURL: imageURL,
+            })
+              .then(() => {
+                console.log(user)
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: "top-end",
+                  showConfirmButton: false,
+                  timer: 2000,
+                  timerProgressBar: true,
+                  didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                  },
+                });
+
+                Toast.fire({
+                  icon: "success",
+                  title: "Update Successfully",
+                });
+                form.reset()
+                registerToHome('/')
+              })
+              .catch((error) => {
+                console.log(error.message)
+              });
+          })
+          .catch((erorr) => {
+            console.log(erorr.message);
+          });
+      }
 
 
-      
-      
 
 
       
@@ -47,7 +93,8 @@ const Register = () => {
           <div className="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <form onSubmit={handleRegister}>
               <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+                <h1 className="mb-8 text-2xl font-bold text-center">Sign up</h1>
+                
                 <input
                   type="text"
                   className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -72,9 +119,10 @@ const Register = () => {
                   type="text"
                   className="block border border-grey-light w-full p-3 rounded mb-4"
                   name="imageURL"
-                  placeholder="Confirm Password"
+                  placeholder="ImageURL"
                 />
 
+                <p className="text-pink-500">{alert}</p>
                 
 
                 <button

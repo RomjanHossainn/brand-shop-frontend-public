@@ -6,11 +6,19 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import AddProduct from "../pages/AddProduct/AddProduct";
 import Update from "../pages/Update/Update";
+import AddProductPrivet from "../AddProductPrivet/AddProductPrivet";
+import UpdatePrivet from "../pages/Update/UpdatePrivet";
+import MyCart from "../pages/MyCart/MyCart";
+import PrivetMyCart from "../pages/MyCart/PrivetMyCart";
+import ProductDetails from "../pages/AllProductDisplay/ProductDetails";
+import ErorrPage from "../ErorrPage/ErorrPage";
+import DetailsPrivet from "../pages/AllProductDisplay/DetailsPrivet";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErorrPage></ErorrPage>,
     children: [
       {
         path: "/",
@@ -31,11 +39,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/addproduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <AddProductPrivet>
+            <AddProduct></AddProduct>
+          </AddProductPrivet>
+        ),
       },
       {
         path: "/update/:id",
-        element: <Update></Update>,
+        element: (
+          <UpdatePrivet>
+            <Update></Update>
+          </UpdatePrivet>
+        ),
+      },
+      {
+        path: "/mycart",
+        element: (
+          <PrivetMyCart>
+            <MyCart></MyCart>
+          </PrivetMyCart>
+        ),
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <DetailsPrivet>
+            <ProductDetails></ProductDetails>
+          </DetailsPrivet>
+        ),
       },
     ],
   },
