@@ -14,6 +14,8 @@ import ProductDetails from "../pages/AllProductDisplay/ProductDetails";
 import ErorrPage from "../ErorrPage/ErorrPage";
 import DetailsPrivet from "../pages/AllProductDisplay/DetailsPrivet";
 
+
+
 const router = createBrowserRouter([
   {
     path: "/",

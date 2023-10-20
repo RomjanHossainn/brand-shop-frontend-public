@@ -76,9 +76,7 @@ const AddProduct = () => {
           <form onSubmit={handleAddProduct}>
             <div className="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2">
               <div>
-                <label className="text-gray-700 dark:text-gray-200">
-                  Name
-                </label>
+                <label className="text-gray-700 dark:text-gray-200">Name</label>
                 <input
                   id="Name"
                   placeholder="Name"
@@ -102,9 +100,7 @@ const AddProduct = () => {
               </div>
 
               <div>
-                <label className="text-gray-700 dark:text-gray-200">
-                  Type
-                </label>
+                <label className="text-gray-700 dark:text-gray-200">Type</label>
                 <input
                   id=""
                   type="text"
@@ -166,7 +162,7 @@ const AddProduct = () => {
             </div>
 
             <div className="flex justify-end mt-6">
-              <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+              <button className="px-8 py-2.5 leading-5 text-white  duration-300 transform bg-[#38c171] rounded-md  focus:outline-none ">
                 Add Product
               </button>
             </div>

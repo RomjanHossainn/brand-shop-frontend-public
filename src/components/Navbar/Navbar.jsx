@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-
+import { HiMiniBars3 } from "react-icons/hi2";
 const Navbar = () => {
 
     const {user,logOut} = useContext(AuthContext)
@@ -20,11 +20,11 @@ const Navbar = () => {
           <li className="text-[17px]">Home</li>
         </NavLink>
 
-        <NavLink to="/addproduct">
+        <NavLink to="/addproduct" >
           <li className="text-[17px]">Add Product</li>
         </NavLink>
 
-        <NavLink to="/mycart">
+        <NavLink to="/mycart" >
           <li className="text-[17px]">My Cart</li>
         </NavLink>
 
@@ -79,20 +79,7 @@ const Navbar = () => {
           </div>
           <div className="dropdown relative">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+              <HiMiniBars3 className="text-3xl"></HiMiniBars3>
             </label>
             <ul
               tabIndex={0}

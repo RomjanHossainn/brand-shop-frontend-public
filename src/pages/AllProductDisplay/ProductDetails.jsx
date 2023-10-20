@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../Footer/Footer";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -87,16 +87,16 @@ const ProductDetails = () => {
                       alt="Product Image"
                     />
                   </div>
-                  <div className="flex -mx-2 mb-4">
+                  <div className="flex items-center -mx-2 mb-4">
                     <div className="w-1/2 px-2">
                       <button onClick={handleAddToCart} className="w-full bg-[#38c171] text-white py-2 px-4 rounded-md font-bold  dark:hover:bg-gray-700">
                         Add to Cart
                       </button>
                     </div>
                     <div className="w-1/2 px-2">
-                      <button className="w-full bg-gray-400/30  text-gray-800  py-2 px-4 rounded-md font-bold ">
+                      <Link to={-1} className="w-full bg-gray-400/30  text-gray-800  py-3 px-4 rounded-md font-bold ">
                         Back to previous page
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

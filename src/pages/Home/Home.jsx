@@ -4,6 +4,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import SingleCategory from "../../components/SingleCategory/SingleCategory";
 import Footer from "../../Footer/Footer";
 import { useEffect, useState } from "react";
+import Contact from "../Contact/Contact";
+import Service from "../../Service/Service";
 
 const Home = () => {
   // const loadedCategory = useLoaderData();
@@ -37,6 +39,10 @@ const Home = () => {
               categorys?.map(category => <SingleCategory key={category.id} category = {category}></SingleCategory>)
             }
           </div>
+        </div>
+        <div>
+          <Service></Service>
+          <Contact></Contact>
         </div>
         <Footer></Footer>
       </div>

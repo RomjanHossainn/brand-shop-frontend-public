@@ -69,7 +69,7 @@ const MyCart = () => {
       <div>
         <Navbar></Navbar>
         {
-          userOrder.length === 0 ? <h1 className="text-center text-3xl py-40">
+          userOrder.length === 0 ? <h1 className="text-center translate-y-10 text-3xl py-28">
           {userOrder.length === 0 ? "No order avalable" : ""}
         </h1> : ''
         }
