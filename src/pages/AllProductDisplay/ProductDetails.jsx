@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../Footer/Footer";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
 
     const params = useParams()
+    const {user} = useContext(AuthContext)
 
     const [detailProduct,setDetailProduct] = useState(null)
 
@@ -22,10 +25,52 @@ const ProductDetails = () => {
         );
     }
 
-    console.log(detailProduct)
     
     const { _id, name, price, image, brand_name, rating, short_description,type } =
       detailProduct || {};
+
+      const userEmail = user.email;
+
+      
+
+      const handleAddToCart = () => {
+          const addToCartInfo = {
+            name,
+            price,
+            image,
+            brand_name,
+            rating,
+            short_description,
+            type,
+            userEmail,
+            
+          };
+
+
+          fetch(`http://localhost:5000/addtocartproduct`,{
+            method:'POST',
+            headers : {
+              'content-type' : 'application/json'
+            },
+            body : JSON.stringify(addToCartInfo)
+          })
+          .then(res=> res.json())
+          .then(result => {
+            if(result.insertedId){
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Your work has been saved",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+            }
+          })
+
+      }
+
+
+
 
     return (
       <div>
@@ -44,7 +89,7 @@ const ProductDetails = () => {
                   </div>
                   <div className="flex -mx-2 mb-4">
                     <div className="w-1/2 px-2">
-                      <button className="w-full bg-[#38c171] text-white py-2 px-4 rounded-md font-bold  dark:hover:bg-gray-700">
+                      <button onClick={handleAddToCart} className="w-full bg-[#38c171] text-white py-2 px-4 rounded-md font-bold  dark:hover:bg-gray-700">
                         Add to Cart
                       </button>
                     </div>

@@ -5,7 +5,7 @@ import { Navigate, useLocation } from "react-router-dom";
 const PrivetMyCart = ({children}) => {
     const {user,loading} = useContext(AuthContext);
     const location = useLocation();
-    console.log(location)
+
     if(loading){
         return (
           <span className=" loading loading-lg text-2xl loading-spinner absolute left-1/2 top-1/2 text-gray-800"></span>
