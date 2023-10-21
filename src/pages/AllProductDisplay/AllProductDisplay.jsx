@@ -11,7 +11,7 @@ const AllProductDisplay = () => {
 
     useEffect(() => {
      
-        fetch(`http://localhost:5000/products/${brandName.name}`)
+        fetch(`https://fashion-backend-nu.vercel.app/products/${brandName.name}`)
           .then((res) => res.json())
           .then((result) => setProducts(result));
       

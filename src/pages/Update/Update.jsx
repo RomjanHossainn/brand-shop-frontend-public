@@ -10,7 +10,7 @@ const Update = () => {
     const [singleProduct,setSingleProduct] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${params.id}`)
+        fetch(`https://fashion-backend-nu.vercel.app/product/${params.id}`)
         .then(res => res.json())
         .then(result => setSingleProduct(result))
     },[params.id])
@@ -59,7 +59,7 @@ const Update = () => {
       };
 
       
-      fetch(`http://localhost:5000/updateProduct/${_id}`,{
+      fetch(`https://fashion-backend-nu.vercel.app/updateProduct/${_id}`,{
         method : 'PUT',
         headers : {
           'content-type' : 'application/json'

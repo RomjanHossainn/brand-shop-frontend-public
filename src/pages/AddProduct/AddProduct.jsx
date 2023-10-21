@@ -31,7 +31,7 @@ const AddProduct = () => {
 
 
     try{
-      fetch('http://localhost:5000/products',{
+      fetch('https://fashion-backend-nu.vercel.app/products',{
         method : 'POST',
         headers : {
           'content-type' : 'application/json'

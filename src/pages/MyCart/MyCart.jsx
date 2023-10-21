@@ -12,7 +12,7 @@ const MyCart = () => {
     const [userOrder,setUserOrder] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addtocartproduct/${user.email}`)
+        fetch(`https://fashion-backend-nu.vercel.app/addtocartproduct/${user.email}`)
         .then(res => res.json())
         .then(result => setUserOrder(result))
     },[user.email])
@@ -41,7 +41,7 @@ const MyCart = () => {
          confirmButtonText: "Yes, delete it!",
        }).then((result) => {
          if (result.isConfirmed) {
-           fetch(`http://localhost:5000/deleteproduct/${_id}`,{
+           fetch(`https://fashion-backend-nu.vercel.app/deleteproduct/${_id}`,{
                method : 'DELETE'
            })
            .then(res => res.json())

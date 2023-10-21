@@ -13,7 +13,7 @@ const Home = () => {
     const [categorys,setCategoryes] = useState(null);
 
     useEffect(()=> {
-      fetch("http://localhost:5000/categoryes")
+      fetch("https://fashion-backend-nu.vercel.app/categoryes")
         .then((res) => res.json())
         .then((result) => setCategoryes(result));
     },[])

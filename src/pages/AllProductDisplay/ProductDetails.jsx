@@ -14,7 +14,7 @@ const ProductDetails = () => {
     const [detailProduct,setDetailProduct] = useState(null)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${params.id}`)
+        fetch(`https://fashion-backend-nu.vercel.app/product/${params.id}`)
           .then((res) => res.json())
           .then((result) => setDetailProduct(result));
     },[params.id])
@@ -48,7 +48,7 @@ const ProductDetails = () => {
           };
 
 
-          fetch(`http://localhost:5000/addtocartproduct`,{
+          fetch(`https://fashion-backend-nu.vercel.app/addtocartproduct`,{
             method:'POST',
             headers : {
               'content-type' : 'application/json'
