@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../Footer/Footer";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import Star from "./Star";
 
 const ProductDetails = () => {
 
@@ -60,7 +61,7 @@ const ProductDetails = () => {
                 Swal.fire({
                   position: "top-end",
                   icon: "success",
-                  title: "Your work has been saved",
+                  title: "Add To card Successfully",
                   showConfirmButton: false,
                   timer: 1500,
                 });
@@ -100,7 +101,7 @@ const ProductDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="md:flex-1 px-4">
+                <div className="md:flex-1 px-4 space-y-5">
                   <h2 className="text-2xl font-bold text-gray-800  mb-2">
                     Product Name
                   </h2>
@@ -147,10 +148,9 @@ const ProductDetails = () => {
                   </div>
                   <div>
                     <span className="font-bold text-gray-700 dark:text-gray-300">
-                      Rating:
                     </span>
                     <span className="text-gray-600  dark:text-gray-300">
-                      {` ${rating} `}
+                      <Star stars={rating}></Star>
                     </span>
                   </div>
                   <div className="mb-4 mt-3">

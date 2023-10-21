@@ -31,38 +31,41 @@ const MyCart = () => {
 
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/deleteproduct/${_id}`,{
-            method : 'DELETE'
-        })
-        .then(res => res.json())
-        .then(result => {
-            if(result.deletedCount > 0){
-              
-                Swal.fire({
-                  title: "Are you sure?",
-                  text: "You won't be able to revert this!",
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#3085d6",
-                  cancelButtonColor: "#d33",
-                  confirmButtonText: "Yes, delete it!",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    Swal.fire(
-                      "Deleted!",
-                      "Your order has been deleted.",
-                      "success"
-                      
-                    );
-                    const deletedProduct = userOrder.filter(
-                      (order) => order._id !== _id
-                    );
-                    setUserOrder(deletedProduct);
-                  }
-                });
-            }
-        })
+       Swal.fire({
+         title: "Are you sure?",
+         text: "You won't be able to revert this!",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Yes, delete it!",
+       }).then((result) => {
+         if (result.isConfirmed) {
+           fetch(`http://localhost:5000/deleteproduct/${_id}`,{
+               method : 'DELETE'
+           })
+           .then(res => res.json())
+           .then(result => {
+               if(result.deletedCount > 0){
+                Swal.fire(
+                  "Deleted!",
+                  "Your order has been deleted.",
+                  "success"
+                );
+                const deletedProduct = userOrder.filter(
+                  (order) => order._id !== _id
+                );
+                setUserOrder(deletedProduct);
+               }
+           })
+           
+         }
+       });
+      
     }
+
+
+
     
     
     return (
@@ -70,8 +73,8 @@ const MyCart = () => {
         <Navbar></Navbar>
         {
           userOrder.length === 0 ? <h1 className="text-center translate-y-10 text-3xl py-28">
-          {userOrder.length === 0 ? "No order avalable" : ""}
-        </h1> : ''
+          {userOrder.length === 0 ? "No order avalable" : "Your Orders"}
+        </h1> : <h1 className="text-center text-3xl -mb-12">Your Orders</h1>
         }
         <div className="max-w-screen-xl mx-auto px-5 py-20">
           <table className="table-auto table">

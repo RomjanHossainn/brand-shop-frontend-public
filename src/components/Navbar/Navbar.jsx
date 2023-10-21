@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink} from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { HiMiniBars3 } from "react-icons/hi2";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 const Navbar = () => {
 
     const {user,logOut} = useContext(AuthContext)
@@ -40,18 +41,26 @@ const Navbar = () => {
 
 
     return (
-      <div className="navbar bg-base-100 max-w-screen-xl mx-auto px-5">
+      <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
         <div className="navbar-start">
-          <a className="normal-case text-xl cursor-pointer">
-            <h1 className="text-2xl">NAGZHL</h1>
+          <a className="normal-case text-xl flex items-center cursor-pointer">
+            <img
+              className="w-32 -ms-1 "
+              src="https://i.ibb.co/x6xzx77/fashion-brand-logo-template-278222-2412.png"
+              alt=""
+            />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 space-x-8">{navLinks}</ul>
         </div>
         <div className="navbar-end">
+          <AiOutlineShoppingCart className="text-3xl w-8 h-8 p-2 rounded-full mr-2 text-white  bg-[#38C171]"></AiOutlineShoppingCart>
           <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle avatar flex"
+            >
               <div className="w-10 rounded-full">
                 <img
                   src={
@@ -71,9 +80,7 @@ const Navbar = () => {
               </p>
 
               <li onClick={handleLogout}>
-                {
-                  user ? <p>Logout</p> : <Link to="/login">Sign In</Link>
-                }
+                {user ? <p>Logout</p> : <Link to="/login">Sign In</Link>}
               </li>
             </ul>
           </div>

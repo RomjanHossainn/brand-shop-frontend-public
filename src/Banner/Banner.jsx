@@ -3,7 +3,7 @@ const Banner = () => {
     return (
       <div className=" max-w-screen-xl lg:flex space-y-8 lg:space-y-0 justify-between items-center mx-auto px-8 py-20">
         <div className="space-y-7">
-          <h2 className="text-5xl">
+          <h2 className="text-6xl leading-tight">
             {" "}
             Most Popular clothing <br /> brands in world
           </h2>

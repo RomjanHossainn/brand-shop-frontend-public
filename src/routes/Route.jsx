@@ -16,6 +16,9 @@ import DetailsPrivet from "../pages/AllProductDisplay/DetailsPrivet";
 
 
 
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",

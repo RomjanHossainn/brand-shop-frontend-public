@@ -13,7 +13,7 @@ const Login = () => {
   const { loginUser } = useContext(AuthContext);
 
   const location = useLocation();
-  console.log(location)
+
 
 const [alert, setAlert] = useState("");
 
@@ -79,7 +79,7 @@ const [alert, setAlert] = useState("");
           navigate(location.state ? location.state : "/");
       })
       .catch(erorr => {
-        console.log(erorr.message)
+        
       })
     }
  

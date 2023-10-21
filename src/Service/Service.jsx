@@ -1,6 +1,7 @@
 import { CiPaperplane } from "react-icons/ci";
 import { FaRegHandScissors } from "react-icons/fa";
 
+
 const Service = () => {
   return (
     <section className="text-gray-600 body-font">
@@ -111,3 +112,4 @@ const Service = () => {
 };
 
 export default Service;
+

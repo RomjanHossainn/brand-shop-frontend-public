@@ -32,12 +32,17 @@ const Home = () => {
         </div>
         <Banner></Banner>
         <div className="max-w-screen-xl mx-auto px-5">
-          <h1 className="text-center text-3xl mb-5">Popolar Brands Shop</h1>
+          <h1 className="text-center text-3xl mb-5 text-[#374151]">
+            Popolar Brands Shop
+          </h1>
           <p></p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 items-center">
-            {
-              categorys?.map(category => <SingleCategory key={category.id} category = {category}></SingleCategory>)
-            }
+            {categorys?.map((category) => (
+              <SingleCategory
+                key={category.id}
+                category={category}
+              ></SingleCategory>
+            ))}
           </div>
         </div>
         <div>

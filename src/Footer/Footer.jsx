@@ -2,21 +2,21 @@
 
 const Footer = () => {
     return (
-      <footer className="bg-white dark:bg-gray-900 py-14">
+      <footer className="bg-white dark:bg-gray-900 py-14 ">
         <div className="container p-6 mx-auto">
           <div className="lg:flex">
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6">
                 <a href="#">
                   <img
-                    className="w-auto h-7"
-                    src="https://merakiui.com/images/full-logo.svg"
+                    className="w-36 -ms-3"
+                    src="https://i.ibb.co/x6xzx77/fashion-brand-logo-template-278222-2412.png"
                     alt=""
                   />
                 </a>
 
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                  Stay with us to get the  latest <br /> updates
+                  Stay with us to get the latest <br /> updates
                 </p>
 
                 <div className="flex mt-6 -mx-2">
