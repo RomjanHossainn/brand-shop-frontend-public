@@ -1,9 +1,11 @@
+import { useState } from "react";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Swal from "sweetalert2";
 
 const AddProduct = () => {
 
+  const [erorr,setErorr] = useState('')
 
   const handleAddProduct = e =>{
     e.preventDefault();
@@ -57,7 +59,7 @@ const AddProduct = () => {
         }
       })
     }catch(erorr){
-      console.log(erorr)
+      setErorr(erorr)
     }
     
 

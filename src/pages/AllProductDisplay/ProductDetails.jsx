@@ -5,7 +5,7 @@ import Footer from "../../Footer/Footer";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import Star from "./Star";
-
+import { BiArrowBack } from "react-icons/bi";
 const ProductDetails = () => {
 
     const params = useParams()
@@ -27,7 +27,7 @@ const ProductDetails = () => {
     }
 
     
-    const { _id, name, price, image, brand_name, rating, short_description,type } =
+    const { name, price, image, brand_name, rating, short_description,type } =
       detailProduct || {};
 
       const userEmail = user.email;
@@ -88,15 +88,22 @@ const ProductDetails = () => {
                       alt="Product Image"
                     />
                   </div>
-                  <div className="flex items-center -mx-2 mb-4">
-                    <div className="w-1/2 px-2">
-                      <button onClick={handleAddToCart} className="w-full bg-[#38c171] text-white py-2 px-4 rounded-md font-bold  dark:hover:bg-gray-700">
+                  <div className="flex items-center justify-center -mx-2 mb-4">
+                    <div className=" px-2">
+                      <button
+                        onClick={handleAddToCart}
+                        className=" bg-[#38c171] text-white w-40 py-2 rounded-md font-bold  dark:hover:bg-gray-700"
+                      >
                         Add to Cart
                       </button>
                     </div>
-                    <div className="w-1/2 px-2">
-                      <Link to={-1} className="w-full bg-gray-400/30  text-gray-800  py-3 px-4 rounded-md font-bold ">
-                        Back to previous page
+                    <div className="px-2">
+                      <Link
+                        to={-1}
+                        className=" w-40 gap-2 justify-center bg-[#38c171] flex items-center py-2  text-gray-800  rounded-md font-bold "
+                      >
+                        <BiArrowBack className="text-2xl rounded-md  bg-[#38c171] text-white "></BiArrowBack>
+                        <span className="text-white">Back</span>
                       </Link>
                     </div>
                   </div>
@@ -147,8 +154,7 @@ const ProductDetails = () => {
                     </div>
                   </div>
                   <div>
-                    <span className="font-bold text-gray-700 dark:text-gray-300">
-                    </span>
+                    <span className="font-bold text-gray-700 dark:text-gray-300"></span>
                     <span className="text-gray-600  dark:text-gray-300">
                       <Star stars={rating}></Star>
                     </span>

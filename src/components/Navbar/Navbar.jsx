@@ -45,7 +45,7 @@ const Navbar = () => {
         <div className="navbar-start">
           <a className="normal-case text-xl flex items-center cursor-pointer">
             <img
-              className="w-32 -ms-1 "
+              className="w-[130px] -ms-1 "
               src="https://i.ibb.co/x6xzx77/fashion-brand-logo-template-278222-2412.png"
               alt=""
             />

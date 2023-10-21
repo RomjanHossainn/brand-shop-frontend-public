@@ -50,7 +50,7 @@ const Register = () => {
               photoURL: imageURL,
             })
               .then(() => {
-                console.log(user)
+
                 const Toast = Swal.mixin({
                   toast: true,
                   position: "top-end",
@@ -71,11 +71,10 @@ const Register = () => {
                 registerToHome('/')
               })
               .catch((error) => {
-                console.log(error.message)
               });
           })
           .catch((erorr) => {
-            console.log(erorr.message);
+
           });
       }
 

@@ -27,7 +27,6 @@ const AuthProvider = ({children}) => {
     useEffect(() => {
         setLoading(true)
         const disConnect = onAuthStateChanged(auth,currentUser => {
-            console.log(currentUser)
             setUser(currentUser)
             setLoading(false)
         })
